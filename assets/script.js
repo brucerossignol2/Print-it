@@ -36,11 +36,48 @@ for (let i = 0; i < nombreDeSlides; i++) {
 	dots.appendChild(dot);
   }
 
+function updateSelectedIndex(selectedIndex) {
+
+	// Pour changer l'image
+	imageNomFichier=(slides[selectedIndex].image);
+	const bannerImg = document.querySelector(".banner-img");
+	bannerImg.src = `./assets/images/slideshow/${imageNomFichier}`;
+	console.log(`L'image a été changée en : ${bannerImg.src}`);
+
+	// Pour changer le texte
+	const paragraphe = document.querySelector("#banner p");
+	paragraphe.textContent = ""; // Supprimer le texte dans la balise <p>
+	newText=(slides[selectedIndex].tagLine);
+	console.log(`affiche le texte changé : ${newText}`);
+	paragraphe.innerHTML = newText;
+
+	// Générer les points
+	dots.innerHTML = "";
+  	console.log("Le conteneur 'dots' a été effacé.");
+
+for (let i = 0; i < nombreDeSlides; i++) {
+	const dot = document.createElement("div");
+	dot.classList.add("dot");
+  
+	// Ajouter la classe "dot_selected" au point sélectionné
+	if (i === selectedIndex) {
+	  dot.classList.add("dot_selected");
+	}
+	// Ajouter chaque point au conteneur
+	dots.appendChild(dot);
+  }}
+
 // écoute les clics sur les flêches
 flecheGauche.addEventListener("click", () => {
 	console.log(`Flêche de gauche clickée.`);
+	selectedIndex = selectedIndex -1;
+	console.log(`nouvelle valeur de selectedIndex ${selectedIndex}`);
+	updateSelectedIndex(selectedIndex); 
 });
 
 flecheDroite.addEventListener("click", () => {
 	console.log(`Flêche de droite clickée.`);
+	selectedIndex = selectedIndex +1;
+	console.log(`nouvelle valeur de selectedIndex ${selectedIndex}`);
+	updateSelectedIndex(selectedIndex); 
 });	
