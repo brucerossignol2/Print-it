@@ -24,19 +24,22 @@ const nombreDeSlides = slides.length; 	// Compte le nombre d'entrées
 console.log(`Nombre d'entrées dans le tableau : ${nombreDeSlides}`);
 const dots = document.querySelector(".dots");	// Conteneur des points
 
-for (let i = 0; i < nombreDeSlides; i++) {
+for (let i = 0; i < nombreDeSlides; i++) 
+{
 	const dot = document.createElement("div");
 	dot.classList.add("dot");
   
 	// Ajouter la classe "dot_selected" au point sélectionné
-	if (i === selectedIndex) {
+	if (i === selectedIndex) 
+	{
 	  dot.classList.add("dot_selected");
 	}
 	// Ajouter chaque point au conteneur
 	dots.appendChild(dot);
-  }
+}
 
-function updateSelectedIndex(selectedIndex) {
+function updateSelectedIndex(selectedIndex) 
+{
 
 	// Pour changer l'image
 	imageNomFichier=(slides[selectedIndex].image);
@@ -55,29 +58,42 @@ function updateSelectedIndex(selectedIndex) {
 	dots.innerHTML = "";
   	console.log("Le conteneur 'dots' a été effacé.");
 
-for (let i = 0; i < nombreDeSlides; i++) {
-	const dot = document.createElement("div");
-	dot.classList.add("dot");
-  
-	// Ajouter la classe "dot_selected" au point sélectionné
-	if (i === selectedIndex) {
-	  dot.classList.add("dot_selected");
+	for (let i = 0; i < nombreDeSlides; i++) 
+	{
+		const dot = document.createElement("div");
+		dot.classList.add("dot");
+	
+		// Ajouter la classe "dot_selected" au point sélectionné
+		if (i === selectedIndex) 
+		{
+			dot.classList.add("dot_selected");
+		}
+		// Ajouter chaque point au conteneur
+		dots.appendChild(dot);
 	}
-	// Ajouter chaque point au conteneur
-	dots.appendChild(dot);
-  }}
+}
 
 // écoute les clics sur les flêches
-flecheGauche.addEventListener("click", () => {
+flecheGauche.addEventListener("click", () => 
+{
 	console.log(`Flêche de gauche clickée.`);
 	selectedIndex = selectedIndex -1;
-	console.log(`nouvelle valeur de selectedIndex ${selectedIndex}`);
+	if (selectedIndex <= -1) 
+	{
+		selectedIndex = nombreDeSlides-1; // va au dernier slide
+		console.log(`nouvelle valeur de selectedIndex ${selectedIndex}`);
+	}
 	updateSelectedIndex(selectedIndex); 
 });
 
-flecheDroite.addEventListener("click", () => {
+flecheDroite.addEventListener("click", () => 
+{
 	console.log(`Flêche de droite clickée.`);
 	selectedIndex = selectedIndex +1;
-	console.log(`nouvelle valeur de selectedIndex ${selectedIndex}`);
+	if (selectedIndex >= nombreDeSlides) 
+	{
+		selectedIndex = 0; // Revient au premier slide
+		console.log(`nouvelle valeur de selectedIndex ${selectedIndex}`);
+	}	
 	updateSelectedIndex(selectedIndex); 
 });	
