@@ -125,7 +125,6 @@ header {
 /* Gestion des fleches du carrousel */
 #banner .arrow {
 	position: absolute;
-	z-index: 0;
 }
 #banner .arrow_left {
 	left: 10px;
