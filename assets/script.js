@@ -36,6 +36,7 @@ for (let i = 0; i < nombreDeSlides; i++)
 	}
 	// Ajouter chaque point au conteneur
 	dots.appendChild(dot);
+	
 }
 
 function updateSelectedIndex(selectedIndex) 
@@ -49,7 +50,6 @@ function updateSelectedIndex(selectedIndex)
 
 	// Pour changer le texte
 	const paragraphe = document.querySelector("#banner p");
-	paragraphe.textContent = ""; // Supprimer le texte dans la balise <p>
 	newText=(slides[selectedIndex].tagLine);
 //	console.log(`affiche le texte changé : ${newText}`);
 	paragraphe.innerHTML = newText;
@@ -78,7 +78,7 @@ flecheGauche.addEventListener("click", () =>
 {
 //	console.log(`Flêche de gauche clickée.`);
 	selectedIndex = selectedIndex -1;
-	if (selectedIndex <= -1) 
+	if (selectedIndex === -1) 
 	{
 		selectedIndex = nombreDeSlides-1; // va au dernier slide
 //		console.log(`nouvelle valeur de selectedIndex ${selectedIndex}`);
@@ -90,7 +90,7 @@ flecheDroite.addEventListener("click", () =>
 {
 //	console.log(`Flêche de droite clickée.`);
 	selectedIndex = selectedIndex +1;
-	if (selectedIndex >= nombreDeSlides) 
+	if (selectedIndex === nombreDeSlides) 
 	{
 		selectedIndex = 0; // Revient au premier slide
 //		console.log(`nouvelle valeur de selectedIndex ${selectedIndex}`);
