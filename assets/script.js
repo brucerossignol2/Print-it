@@ -41,7 +41,6 @@ for (let i = 0; i < nombreDeSlides; i++)
 
 function updateSelectedIndex(selectedIndex) 
 {
-
 	// Pour changer l'image
 	imageNomFichier=(slides[selectedIndex].image);
 	const bannerImg = document.querySelector(".banner-img");
@@ -54,23 +53,16 @@ function updateSelectedIndex(selectedIndex)
 //	console.log(`affiche le texte changé : ${newText}`);
 	paragraphe.innerHTML = newText;
 
-	// Générer les points
-	dots.innerHTML = "";
-// 	console.log("Le conteneur 'dots' a été effacé.");
-
-	for (let i = 0; i < nombreDeSlides; i++) 
-	{
-		const dot = document.createElement("div");
-		dot.classList.add("dot");
-	
-		// Ajouter la classe "dot_selected" au point sélectionné
-		if (i === selectedIndex) 
-		{
-			dot.classList.add("dot_selected");
-		}
-		// Ajouter chaque point au conteneur
-		dots.appendChild(dot);
-	}
+  // Mettre à jour les points
+  const allDots = document.querySelectorAll(".dot");
+  allDots.forEach((dot, index) => {
+    // Active ou désactive la classe "dot_selected"
+    if (index === selectedIndex) {
+      dot.classList.add("dot_selected");
+    } else {
+      dot.classList.remove("dot_selected");
+    }
+  });
 }
 
 // écoute les clics sur les flêches
